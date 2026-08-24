@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using AramMayhemOverlay.Configuration;
 using AramMayhemOverlay.Data;
 using AramMayhemOverlay.Data.Mock;
 
@@ -14,8 +15,17 @@ public partial class App : Application
         IGameStateProvider gameStateProvider =
             new MockGameStateProvider();
 
+        ISettingsService settingsService =
+            new SettingsService();
+
+        OverlaySettings settings =
+            settingsService.Load();
+
         var mainWindow =
-            new MainWindow(gameStateProvider);
+            new MainWindow(
+                gameStateProvider,
+                settings,
+                settingsService);
 
         MainWindow = mainWindow;
 

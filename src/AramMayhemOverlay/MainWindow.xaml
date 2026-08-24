@@ -13,127 +13,140 @@
         Topmost="True"
         ShowInTaskbar="True">
 
-    <Border
-        Margin="10"
-        Padding="20"
-        Background="#E61A1A1A"
-        CornerRadius="16"
-        BorderBrush="#40FFFFFF"
-        BorderThickness="1"
-        MouseLeftButtonDown="OverlayBorder_MouseLeftButtonDown">
+    <Grid>
+        <Border
+            Margin="10"
+            Padding="20"
+            Background="#E61A1A1A"
+            CornerRadius="16"
+            BorderBrush="#40FFFFFF"
+            BorderThickness="1"
+            MouseLeftButtonDown="OverlayBorder_MouseLeftButtonDown">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="0"
-                Text="ARAM MAYHEM"
-                Foreground="White"
-                FontSize="22"
-                FontWeight="SemiBold"/>
-
-            <TextBlock
-                Grid.Row="0"
-                Grid.Column="1"
-                Text="●"
-                Foreground="#80FFFFFF"
-                FontSize="18"
-                VerticalAlignment="Center"/>
-
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="0,14,0,0"
-                Text="{Binding ChampionName, Mode=OneWay}"
-                Foreground="White"
-                FontSize="18"
-                FontWeight="SemiBold"/>
-
-            <TextBlock
-                Grid.Row="1"
-                Grid.Column="1"
-                Margin="16,14,0,0"
-                Text="{Binding LevelText, Mode=OneWay}"
-                Foreground="#D9FFFFFF"
-                FontSize="14"
-                VerticalAlignment="Center"/>
-
-            <TextBlock
-                Grid.Row="2"
-                Grid.ColumnSpan="2"
-                Margin="0,14,0,0"
-                Text="HEALTH"
-                Foreground="#90FFFFFF"
-                FontSize="11"
-                FontWeight="SemiBold"/>
-
-            <Grid
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Margin="0,5,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <ProgressBar
+                <TextBlock
+                    Grid.Row="0"
                     Grid.Column="0"
-                    Height="10"
-                    Minimum="0"
-                    Maximum="{Binding MaxHealthValue, Mode=OneWay}"
-                    Value="{Binding HealthValue, Mode=OneWay}"/>
+                    Text="ARAM MAYHEM"
+                    Foreground="White"
+                    FontSize="22"
+                    FontWeight="SemiBold"/>
 
                 <TextBlock
+                    Grid.Row="0"
                     Grid.Column="1"
-                    Margin="10,0,0,0"
-                    Text="{Binding HealthText, Mode=OneWay}"
-                    Foreground="White"
-                    FontSize="13"
+                    Text="●"
+                    Foreground="#80FFFFFF"
+                    FontSize="18"
                     VerticalAlignment="Center"/>
-            </Grid>
 
-            <Border
-                Grid.Row="4"
-                Grid.ColumnSpan="2"
-                Margin="0,16,0,0"
-                Padding="12"
-                Background="#26FFFFFF"
-                CornerRadius="10">
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0,14,0,0"
+                    Text="{Binding ChampionName, Mode=OneWay}"
+                    Foreground="White"
+                    FontSize="18"
+                    FontWeight="SemiBold"/>
 
-                <StackPanel>
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="16,14,0,0"
+                    Text="{Binding LevelText, Mode=OneWay}"
+                    Foreground="#D9FFFFFF"
+                    FontSize="14"
+                    VerticalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Margin="0,14,0,0"
+                    Text="HEALTH"
+                    Foreground="#90FFFFFF"
+                    FontSize="11"
+                    FontWeight="SemiBold"/>
+
+                <Grid
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    Margin="0,5,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ProgressBar
+                        Grid.Column="0"
+                        Height="10"
+                        Minimum="0"
+                        Maximum="{Binding MaxHealthValue, Mode=OneWay}"
+                        Value="{Binding HealthValue, Mode=OneWay}"/>
+
                     <TextBlock
-                        Text="MAYHEM"
-                        Foreground="#90FFFFFF"
-                        FontSize="11"
-                        FontWeight="SemiBold"/>
-
-                    <TextBlock
-                        Margin="0,4,0,0"
-                        Text="{Binding MayhemModifier, Mode=OneWay}"
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        Text="{Binding HealthText, Mode=OneWay}"
                         Foreground="White"
-                        FontSize="14"/>
+                        FontSize="13"
+                        VerticalAlignment="Center"/>
+                </Grid>
 
-                    <TextBlock
-                        Margin="0,4,0,0"
-                        Text="{Binding StatusText, Mode=OneWay}"
-                        Foreground="#B8FFFFFF"
-                        FontSize="12"/>
-                </StackPanel>
-            </Border>
-        </Grid>
+                <Border
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    Margin="0,16,0,0"
+                    Padding="12"
+                    Background="#26FFFFFF"
+                    CornerRadius="10">
 
-    </Border>
+                    <StackPanel>
+                        <TextBlock
+                            Text="MAYHEM"
+                            Foreground="#90FFFFFF"
+                            FontSize="11"
+                            FontWeight="SemiBold"/>
+
+                        <TextBlock
+                            Margin="0,4,0,0"
+                            Text="{Binding MayhemModifier, Mode=OneWay}"
+                            Foreground="White"
+                            FontSize="14"/>
+
+                        <TextBlock
+                            Margin="0,4,0,0"
+                            Text="{Binding StatusText, Mode=OneWay}"
+                            Foreground="#B8FFFFFF"
+                            FontSize="12"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </Border>
+
+        <Border
+            Width="20"
+            Height="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="0,0,2,2"
+            Background="#70FFFFFF"
+            CornerRadius="5"
+            Cursor="SizeNWSE"
+            ToolTip="Resize overlay"
+            MouseLeftButtonDown="ResizeGrip_MouseLeftButtonDown"/>
+    </Grid>
 </Window>
