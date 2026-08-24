@@ -1,12 +1,63 @@
 ﻿<Window x:Class="AramMayhemOverlay.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AramMayhemOverlay"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="ARAM Mayhem Overlay"
+        Width="360"
+        Height="220"
+        MinWidth="300"
+        MinHeight="180"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="True">
 
-    </Grid>
+    <Border
+        Margin="10"
+        Padding="18"
+        Background="#E61A1A1A"
+        CornerRadius="16"
+        BorderBrush="#40FFFFFF"
+        BorderThickness="1"
+        MouseLeftButtonDown="OverlayBorder_MouseLeftButtonDown">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                Text="ARAM MAYHEM"
+                Foreground="White"
+                FontSize="22"
+                FontWeight="SemiBold"/>
+
+            <TextBlock
+                Grid.Row="2"
+                Text="Overlay Prototype"
+                Foreground="#B8FFFFFF"
+                FontSize="13"/>
+
+            <TextBlock
+                Grid.Row="3"
+                Margin="0,12,0,0"
+                Text="Champion: Demo"
+                Foreground="White"
+                FontSize="16"/>
+
+            <TextBlock
+                Grid.Row="4"
+                Margin="0,6,0,0"
+                Text="Level: 12    HP: 1420 / 1680"
+                Foreground="#D9FFFFFF"
+                FontSize="14"/>
+        </Grid>
+
+    </Border>
 </Window>
