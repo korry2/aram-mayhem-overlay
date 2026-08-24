@@ -1,3 +1,4 @@
+using System;
 using AramMayhemOverlay.Models;
 
 namespace AramMayhemOverlay.UI;
@@ -18,11 +19,21 @@ public sealed class GameStateViewModel
 
         ChampionName = gameState.ChampionName;
         LevelText = $"LEVEL {gameState.Level}";
-        HealthText =
-            $"{gameState.CurrentHealth} / {gameState.MaxHealth}";
 
-        HealthValue = gameState.CurrentHealth;
-        MaxHealthValue = gameState.MaxHealth;
+        double safeMaxHealth =
+            Math.Max(0, gameState.MaxHealth);
+
+        double safeCurrentHealth =
+            Math.Clamp(
+                gameState.CurrentHealth,
+                0,
+                safeMaxHealth);
+
+        HealthText =
+            $"{safeCurrentHealth:0} / {safeMaxHealth:0}";
+
+        HealthValue = safeCurrentHealth;
+        MaxHealthValue = safeMaxHealth;
 
         MayhemModifier = gameState.MayhemModifier;
         StatusText = gameState.StatusText;

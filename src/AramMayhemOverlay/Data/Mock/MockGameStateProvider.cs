@@ -10,7 +10,7 @@ public sealed class MockGameStateProvider : IGameStateProvider
         {
             ChampionName = "Jinx",
             Level = 12,
-            CurrentHealth = 210,
+            CurrentHealth = 1420,
             MaxHealth = 1680,
             MayhemModifier = "Chaos Amplifier",
             StatusText = "Mock game state"
