@@ -7,6 +7,7 @@ using System.Windows.Threading;
 using AramMayhemOverlay.Data;
 using AramMayhemOverlay.Models;
 using AramMayhemOverlay.Services;
+using AramMayhemOverlay.UI;
 
 namespace AramMayhemOverlay;
 
@@ -63,34 +64,16 @@ public partial class MainWindow : Window
         SourceInitialized += MainWindow_SourceInitialized;
         Closed += MainWindow_Closed;
 
-        LoadGameState();
+        LoadGameStateViewModel();
     }
 
-    private void LoadGameState()
+    private void LoadGameStateViewModel()
     {
         GameState gameState =
             _gameStateProvider.GetCurrentGameState();
 
-        ChampionNameText.Text =
-            gameState.ChampionName;
-
-        LevelText.Text =
-            $"LEVEL {gameState.Level}";
-
-        HealthText.Text =
-            $"{gameState.CurrentHealth} / {gameState.MaxHealth}";
-
-        MayhemModifierText.Text =
-            gameState.MayhemModifier;
-
-        StatusText.Text =
-            gameState.StatusText;
-
-        HealthBar.Maximum =
-            gameState.MaxHealth;
-
-        HealthBar.Value =
-            gameState.CurrentHealth;
+        DataContext =
+            new GameStateViewModel(gameState);
     }
 
     private void MainWindow_SourceInitialized(

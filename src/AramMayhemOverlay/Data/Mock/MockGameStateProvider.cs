@@ -8,7 +8,7 @@ public sealed class MockGameStateProvider : IGameStateProvider
     {
         return new GameState
         {
-            ChampionName = "Ahri",
+            ChampionName = "Jinx",
             Level = 12,
             CurrentHealth = 1420,
             MaxHealth = 1680,

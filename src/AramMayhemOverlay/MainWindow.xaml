@@ -53,19 +53,19 @@
                 VerticalAlignment="Center"/>
 
             <TextBlock
-                x:Name="ChampionNameText"
                 Grid.Row="1"
                 Grid.Column="0"
                 Margin="0,14,0,0"
+                Text="{Binding ChampionName, Mode=OneWay}"
                 Foreground="White"
                 FontSize="18"
                 FontWeight="SemiBold"/>
 
             <TextBlock
-                x:Name="LevelText"
                 Grid.Row="1"
                 Grid.Column="1"
                 Margin="16,14,0,0"
+                Text="{Binding LevelText, Mode=OneWay}"
                 Foreground="#D9FFFFFF"
                 FontSize="14"
                 VerticalAlignment="Center"/>
@@ -90,17 +90,16 @@
                 </Grid.ColumnDefinitions>
 
                 <ProgressBar
-                    x:Name="HealthBar"
                     Grid.Column="0"
                     Height="10"
                     Minimum="0"
-                    Maximum="1"
-                    Value="0.5"/>
+                    Maximum="{Binding MaxHealthValue, Mode=OneWay}"
+                    Value="{Binding HealthValue, Mode=OneWay}"/>
 
                 <TextBlock
-                    x:Name="HealthText"
                     Grid.Column="1"
                     Margin="10,0,0,0"
+                    Text="{Binding HealthText, Mode=OneWay}"
                     Foreground="White"
                     FontSize="13"
                     VerticalAlignment="Center"/>
@@ -122,14 +121,14 @@
                         FontWeight="SemiBold"/>
 
                     <TextBlock
-                        x:Name="MayhemModifierText"
                         Margin="0,4,0,0"
+                        Text="{Binding MayhemModifier, Mode=OneWay}"
                         Foreground="White"
                         FontSize="14"/>
 
                     <TextBlock
-                        x:Name="StatusText"
                         Margin="0,4,0,0"
+                        Text="{Binding StatusText, Mode=OneWay}"
                         Foreground="#B8FFFFFF"
                         FontSize="12"/>
                 </StackPanel>
