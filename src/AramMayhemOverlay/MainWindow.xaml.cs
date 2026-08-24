@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Threading;
+using AramMayhemOverlay.Data;
 using AramMayhemOverlay.Models;
 using AramMayhemOverlay.Services;
 
@@ -32,6 +33,8 @@ public partial class MainWindow : Window
     private OverlayInputMode _inputMode =
         OverlayInputMode.Interactive;
 
+    private readonly IGameStateProvider _gameStateProvider;
+
     private readonly WindowPositionService _windowPositionService =
         new();
 
@@ -41,8 +44,12 @@ public partial class MainWindow : Window
 
     private IntPtr _targetWindowHandle = IntPtr.Zero;
 
-    public MainWindow()
+    public MainWindow(IGameStateProvider gameStateProvider)
     {
+        ArgumentNullException.ThrowIfNull(gameStateProvider);
+
+        _gameStateProvider = gameStateProvider;
+
         InitializeComponent();
 
         _trackingTimer = new DispatcherTimer
@@ -55,6 +62,35 @@ public partial class MainWindow : Window
 
         SourceInitialized += MainWindow_SourceInitialized;
         Closed += MainWindow_Closed;
+
+        LoadGameState();
+    }
+
+    private void LoadGameState()
+    {
+        GameState gameState =
+            _gameStateProvider.GetCurrentGameState();
+
+        ChampionNameText.Text =
+            gameState.ChampionName;
+
+        LevelText.Text =
+            $"LEVEL {gameState.Level}";
+
+        HealthText.Text =
+            $"{gameState.CurrentHealth} / {gameState.MaxHealth}";
+
+        MayhemModifierText.Text =
+            gameState.MayhemModifier;
+
+        StatusText.Text =
+            gameState.StatusText;
+
+        HealthBar.Maximum =
+            gameState.MaxHealth;
+
+        HealthBar.Value =
+            gameState.CurrentHealth;
     }
 
     private void MainWindow_SourceInitialized(
@@ -299,7 +335,6 @@ public partial class MainWindow : Window
 
     [DllImport(
         "user32.dll",
-        EntryPoint = "SetWindowLongPtrW",
         SetLastError = true)]
     private static extern IntPtr SetWindowLongPtr(
         IntPtr hWnd,
